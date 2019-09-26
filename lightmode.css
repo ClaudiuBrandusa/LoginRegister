@@ -1,0 +1,27 @@
+﻿.container {
+    border: 2px solid #878787;
+    background-color: #EBEBEB;
+    /*Shadow*/
+    -webkit-box-shadow: -4px 4px 10px -3px rgba(0,0,0,0.5);
+    -moz-box-shadow: -4px 4px 10px -3px rgba(0,0,0,0.5);
+    box-shadow: -4px 4px 10px -3px rgba(0,0,0,0.5);
+}
+.button {
+    border-color: black;
+    background-color: #bdbdbd;
+    color: black;
+}
+.pagination span { /*Current page*/
+    background-color: black;
+    border: 1px solid darkblue;
+    color: white;
+}
+.pagination a, a { /*Noncurrent pages*/
+    border: 2px solid black;
+    color: black;
+}
+.setting_rows {
+    border-color: black;
+    background-color: white;
+    color: black;
+}
