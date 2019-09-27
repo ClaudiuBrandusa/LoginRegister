@@ -1,6 +1,11 @@
 # LoginRegister
 A web app with login, register &amp; sql database management system.  
 There are 3 web pages, login.aspx, register.aspx and dashboard.aspx.
+# Requirements
+- .NET Framework 3.8 Runtime. 
+- .NET Framework 3.8 SDK.
+- Visual Studio with ASP.NET installed (or another C# IDE).
+- Microsoft SQL Server Management 18.
 # The Database
 I use Microsoft SQL server as my Database. In 'db' folder I left the query for the Database generation called 'db.sql'.
 There I inserted the account called 'Admin' with the password 'root'.  
