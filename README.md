@@ -17,6 +17,16 @@ The Database contains a table called 'no_encrypt', all of the usernames from thi
 - The app has two themes, light theme (contains shades of gray) and dark theme (contains shades of dark gray).
 # The UI
 There are some images with the app.
-[im refreshing the images]
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/0.PNG)
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/1.PNG)
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/2.PNG)
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/3.PNG)
+Only the Moderators and Admins will have access to this menu.
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/4.PNG)
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/5.PNG)
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/6.PNG)
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/7.PNG)
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/8.PNG)
+![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/9.PNG)
 # Before you leave
 If you found a problem in my repository or do you want to improve it or do you want to collab with me on a project, then please inbox me on discord: canfly#5432
