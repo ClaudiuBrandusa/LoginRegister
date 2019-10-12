@@ -6,12 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace LoginRegister
 {
     public partial class Login : System.Web.UI.Page
     {
-        string connection = @"Data Source=.\DB;initial Catalog=db;Integrated Security=True;";
+        string connection = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
         Encryption Enc = new Encryption();
         NoEncryption noEnc;
         protected void Page_Load(object sender, EventArgs e)
@@ -24,8 +25,9 @@ namespace LoginRegister
             using (SqlConnection sqlCon = new SqlConnection(connection))
             {
                 sqlCon.Open();
-                string banQuery = "SELECT banned FROM accounts WHERE username='"+txtUserName.Text+"'";
+                string banQuery = "SELECT banned FROM accounts WHERE username=@username";
                 SqlCommand GetBanStatus = new SqlCommand(banQuery, sqlCon);
+                GetBanStatus.Parameters.AddWithValue("@username", txtUserName.Text.Trim());
                 if (Convert.ToInt32(GetBanStatus.ExecuteScalar()) != 1)
                 {
                     noEnc = new NoEncryption(connection);
@@ -38,17 +40,30 @@ namespace LoginRegister
                     sqlCmd.Parameters.AddWithValue("@username", txtUserName.Text.Trim());
                     getIdCmd.Parameters.AddWithValue("@username", txtUserName.Text.Trim());
                     getRankCmd.Parameters.AddWithValue("@username", txtUserName.Text.Trim());
-                    if (noEnc.isIn(txtUserName.Text)) // this will let us to use non encrypted passwords that we have added from the Database
+                    bool status = false; // true - connected
+                    try
                     {
-                        sqlCmd.Parameters.AddWithValue("@password", txtPassword.Text.Trim());
-                    }
-                    else
+                        if (noEnc.isIn(txtUserName.Text)) // this will let us to use non encrypted passwords that we have added from the Database
+                        {
+                            sqlCmd.Parameters.AddWithValue("@password", txtPassword.Text.Trim());
+
+                            status = Convert.ToBoolean(sqlCmd.ExecuteScalar());
+                        }
+                        else
+                        {
+                            string getPass = "SELECT password FROM accounts WHERE username=@username";
+                            SqlCommand GetPass = new SqlCommand(getPass, sqlCon);
+                            GetPass.Parameters.AddWithValue("@username", txtUserName.Text.Trim());
+                            string pass = GetPass.ExecuteScalar().ToString();
+                            status = Enc.Verify(txtPassword.Text.Trim().ToString(), pass);
+                        }
+                    } catch
                     {
-                        sqlCmd.Parameters.AddWithValue("@password", Enc.PassHash(txtPassword.Text.Trim()));
+                        lblErrorMessage.Text = "Invalid credentials.";
+                        lblErrorMessage.Visible = true;
                     }
 
-                    int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
-                    if (count == 1)
+                    if (status)
                     {
                         Session["username"] = txtUserName.Text.Trim();
                         Session["id"] = getIdCmd.ExecuteScalar();
