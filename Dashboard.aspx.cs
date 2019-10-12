@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace LoginRegister
 {
@@ -13,8 +14,8 @@ namespace LoginRegister
     {
         DataTable dt;
         DataTable dt1;
-        string connection = @"Data Source=.\DB;initial Catalog=db;Integrated Security=True;";
-        AdminControl ac = new AdminControl(@"Data Source=.\DB;initial Catalog=db;Integrated Security=True;");
+        string connection = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
+        AdminControl ac = new AdminControl();
         protected void Page_Load(object sender, EventArgs e)
         {
             UpdateTheme();
