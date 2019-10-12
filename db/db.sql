@@ -16,5 +16,6 @@ username varchar(24) NOT NULL,
 INSERT INTO no_encrypt (username) VALUES ('Admin')
 CREATE TABLE settings(
 theme bit NOT NULL DEFAULT 0,
+salt char(29),
 )
 INSERT INTO settings (theme) VALUES ('False')
