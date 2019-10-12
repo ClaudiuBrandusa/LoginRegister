@@ -6,13 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace LoginRegister
 {
     public partial class register : System.Web.UI.Page
     {
         Encryption Enc = new Encryption();
-        string connection = @"Data Source=.\DB;initial Catalog=db;Integrated Security=True;";
+        string connection = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             lbl1ErrorMessage.Visible = false;
