@@ -8,17 +8,29 @@ namespace LoginRegister
 {
     public class Encryption
     {
+        string salt;
+        AdminControl ac;
+        public Encryption()
+        {
+            ac = new AdminControl();
+            // we will verify if the database has already a salt or not
+            if (ac.HasSalt())
+            {
+                salt = ac.GetSalt();
+            }
+            else
+            {
+                salt = BCrypt.Net.BCrypt.GenerateSalt(11);
+                ac.SetSalt(salt);
+            }
+        }
         public string PassHash(string data)
         {
-            SHA1 sha = SHA1.Create();
-            byte[] hashdata = sha.ComputeHash(Encoding.Default.GetBytes(data));
-            StringBuilder returnValue = new StringBuilder();
-
-            for(int i=0;i<hashdata.Length;i++)
-            {
-                returnValue.Append(hashdata[i].ToString());
-            }
-            return returnValue.ToString();
+            return BCrypt.Net.BCrypt.HashPassword(data,salt);
+        }
+        public bool Verify(string data, string hashed)
+        {
+            return Convert.ToBoolean(BCrypt.Net.BCrypt.Verify(data, hashed));
         }
     }
 }
