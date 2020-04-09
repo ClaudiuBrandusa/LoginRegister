@@ -7,7 +7,7 @@ There are 3 web pages, login.aspx, register.aspx and dashboard.aspx.
 - Visual Studio with ASP.NET installed (or another C# IDE).
 - Microsoft SQL Server Management 18.
 - BCrypt.NET.
-# The Database
+# Database
 I use Microsoft SQL server as my Database. In 'db' folder I left the query for the Database generation called 'db.sql'.
 There I inserted the account called 'Admin' with the password 'root'.  
 The Database contains a table called 'no_encrypt', all of the usernames from this table have an unencrypted password.
@@ -16,7 +16,7 @@ The Database contains a table called 'no_encrypt', all of the usernames from thi
 - You can make a Member (rank 0) a Moderator (rank 1) or an Admin (rank 2) only from the Database for now.
 - You will be redirected to login.aspx if you try to enter Dashboard.aspx without loging or registering before.
 - The app has two themes, light theme (contains shades of gray) and dark theme (contains shades of dark gray).
-# The UI
+# UI
 There are some images with the app.
 ![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/0.PNG)
 ![alt text](https://github.com/ClaudiuBrandusa/LoginRegister/blob/images/images/1.PNG)
